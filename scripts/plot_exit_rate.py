@@ -19,6 +19,7 @@ radius = (window//2)
 # how often do we want the exit rate report? (seconds)
 freq = 10
 
+outputFileName = ""
 # calculate avg number of cars per minute in "window", every "freq"
 # seconds; do this for each sink separately
 
@@ -42,8 +43,10 @@ for sinkid in sinks_exrates.columns:
     ax.set_title('Exit rate over a rolling {} min window, computed every {} seconds'.format(window_minutes, freq))
     ax.set_ylabel('Cars per minute')
     ax.set_xlabel('Time (seconds)')
-    fig.savefig(savepath_fmt.format(sinkid) + '.png')
+    outputFileName = savepath_fmt.format(sinkid) + '.png'
+    fig.savefig(outputFileName)
     plt.close(fig)
     #plt.show()
 
-print('Saved all the plots.')
+# print('Saved all the plots.')
+print(outputFileName)
